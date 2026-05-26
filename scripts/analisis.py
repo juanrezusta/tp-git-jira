@@ -6,10 +6,8 @@ import matplotlib.pyplot as plt
 DATA_DIR = "datos"
 RESULTS_DIR = "resultados"
 
-# Descarga de datos oficiales
-url_dataset = "https://raw.githubusercontent.com/datasets/climate-change-gistemp/master/data/monthly_csv.csv"
-df = pd.read_csv(url_dataset)
-df.to_csv(os.path.join(DATA_DIR, "monthly_climate_raw.csv"), index=False)
+# Levantamos el archivo directamente desde la carpeta local datos
+df = pd.read_csv(os.path.join(DATA_DIR, "monthly_climate_raw.csv"))
 
 # Filtrado por la fuente GISTEMP
 df_filtered = df[df['Source'] == 'GISTEMP'].copy()
